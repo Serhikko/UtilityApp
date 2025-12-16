@@ -56,10 +56,27 @@ void userInsertIncome()
     cout << "\nYour initial balance has been set to: £" << currentBalance << endl;
 }
 
-// void userExpences()
-// {
-//    //cout if user had any expences so far?
-// }
+void deposit()
+{
+   //making able to deposit money to the ballance
+   cout << "\n === DEPOSIT ===" << endl;
+   cout << "Enter deposit amoutn (£): ";
+   double amount;
+   cin >> amount;
+
+
+   //validation
+   if (amount <= 0)
+   {
+      count << "Invalid amount.Please enter a positive value" << endl;
+      return;
+   } 
+
+   cout << "Enter category (e.g, Salary, Bonus, Gift): "
+   cin.ignore();
+   string categort
+
+}
 
 // void balanceCalculation()
 // {
