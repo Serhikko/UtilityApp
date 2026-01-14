@@ -109,10 +109,55 @@ void deposit()
     cout << "New balance: £" << currentBalance << endl;
 }
 
-// void balanceCalculation()
-// {
-//    //if user had any expences already proceeed to calculation
-// }
+//making able to withdraw money from ballance and save transaction
+void withdraw()
+{
+    cout << "\n=== WITHDRAW ===" << endl;
+    cout << "Enter withdraw amount (£): ";
+    double amount;
+    cin >> amount;
+
+    //validation check if amount is more then 0
+    if (amount <= 0)
+    {
+        cout << "Invalid amount. Please enter a positive value." << endl;
+        return;//stop withdraw if wrong value
+    }
+
+    //checking if user have enough money for withdraw
+    if (amount > currentBalance)
+    {
+        cout << "Not enough balance! Current balance: £" << currentBalance << endl;
+        return;
+    }
+
+    cout << "Enter category (e.g. Food, Rent, Transport): ";
+    
+    //same validation to clean input buffer before using getline
+    cin.ignore();
+    string category;
+    getline(cin, category);
+
+    //checking if we still have space for new transaction
+    if (transactionCount >= MaxTransactions) 
+    {
+        cout << "Transaction limit reached! Cannot add more transactions." << endl;
+        return;
+    }
+
+    //take money from current ballance
+    currentBalance -= amount;
+
+    //save info about this withdraw in arrays
+    transCategory[transactionCount] = "Withdraw - " + category;
+    transType[transactionCount] = "withdraw";
+    transAmount[transactionCount] = amount;
+    transactionCount++;
+
+    cout << "Withdraw of £" << amount << " completed successfully!" << endl;
+    cout << "New balance: £" << currentBalance << endl;
+}
+
 
 // void spendingCategiries()
 // {
@@ -137,7 +182,7 @@ int main()
     {
         viewMenu();      //show menu
         cin >> choice;   //get user option
-        
+
         switch (choice)
         {
             case 1:
