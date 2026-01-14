@@ -164,6 +164,27 @@ void viewBalance()//function to view balance
     cout << "Your current balance is: £" << currentBalance << endl;
 }
 
+//showing all transactions user made
+void viewTransactionSummary()
+{
+    cout << "\n=== TRANSACTION SUMMARY ===" << endl;
+
+    //check if there is any transactions
+    if (transactionCount == 0)
+    {
+        cout << "No transactions yet." << endl;
+        return;
+    }
+
+    //loop through all saved transactions and print them
+    for (int i = 0; i < transactionCount; i++)
+    {
+        cout << i + 1 << ". "
+             << transCategory[i] << " | "
+             << transType[i] << " | £"
+             << transAmount[i] << endl;
+    }
+}
 // void spendingCategiries()
 // {
 //    //set number of spending categiries to refer to them in future eg.house,food,vehicles and transport,entertainment.
@@ -205,8 +226,8 @@ int main()
                 break;
 
             case 4:
-                //here later will be transaction summary
-                cout << "Transaction summary not added yet." << endl;
+                //transaction summary
+                viewTransactionSummary();
                 break;
 
             case 5:
