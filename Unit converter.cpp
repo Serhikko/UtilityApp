@@ -185,16 +185,63 @@ void viewTransactionSummary()
              << transAmount[i] << endl;
     }
 }
-// void spendingCategiries()
-// {
-//    //set number of spending categiries to refer to them in future eg.house,food,vehicles and transport,entertainment.
-// }
 
-// void warningMessage()
-// {
-//    //if spending in some category is higher then some % cout you need to cut the budget in some area
-// }
+//showing total spending for each category (only withdraws)
+void viewSpendingByCategory()
+{
+    cout << "\n=== SPENDING BY CATEGORY ===" << endl;
 
+    //check if there is any transactions
+    if (transactionCount == 0)
+    {
+        cout << "No transactions yet." << endl;
+        return;
+    }
+
+    //totals for 4 main categories
+    double foodTotal = 0.0;
+    double rentTotal = 0.0;
+    double transportTotal = 0.0;
+    double otherTotal = 0.0;
+
+    //loop through all transactions and check each withdraw category
+    for (int i = 0; i < transactionCount; i++)
+    {
+        if (transType[i] == "withdraw")
+        {
+            //check exact category names (no string::find needed)
+            if (transCategory[i] == "Withdraw - Food")
+            {
+                foodTotal += transAmount[i];
+            }
+            else if (transCategory[i] == "Withdraw - Rent")
+            {
+                rentTotal += transAmount[i];
+            }
+            else if (transCategory[i] == "Withdraw - Transport")
+            {
+                transportTotal += transAmount[i];
+            }
+            else
+            {
+                otherTotal += transAmount[i];
+            }
+        }
+    }
+
+    //show totals for each category
+    cout << "Food: £" << foodTotal << endl;
+    cout << "Rent: £" << rentTotal << endl;
+    cout << "Transport: £" << transportTotal << endl;
+    cout << "Other: £" << otherTotal << endl;
+
+    //simple warning if spending is too much
+    double totalSpending = foodTotal + rentTotal + transportTotal + otherTotal;
+    if (totalSpending > monthlyIncome * 0.5)
+    {
+        cout << "Warning: Spending more than 50% of your income!" << endl;
+    }
+}
 //-----------------------------------------------------------------------------
 int main()
 {
@@ -231,8 +278,8 @@ int main()
                 break;
 
             case 5:
-                //here later will be spending by category
-                cout << "Spending by category not added yet." << endl;
+                //spending by category
+                viewSpendingByCategory();
                 break;
 
             case 6:
