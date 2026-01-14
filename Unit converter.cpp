@@ -195,8 +195,8 @@ int main()
                 break;
 
             case 2:
-                //here later will be withdraw function
-                cout << "Withdraw feature not added yet." << endl;
+                //withdraw function
+                withdraw();
                 break;
 
             case 3:
