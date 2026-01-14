@@ -158,6 +158,11 @@ void withdraw()
     cout << "New balance: £" << currentBalance << endl;
 }
 
+void viewBalance()//function to view balance
+{
+    cout << "\n=== CURRENT BALANCE ===" << endl;
+    cout << "Your current balance is: £" << currentBalance << endl;
+}
 
 // void spendingCategiries()
 // {
@@ -195,8 +200,8 @@ int main()
                 break;
 
             case 3:
-                //here later will be view balance function
-                cout << "View balance feature not added yet." << endl;
+                //view balance function
+                viewBalance();
                 break;
 
             case 4:
