@@ -10,20 +10,21 @@
 #include <iostream>
 #include <string>
 using namespace std;
-//-----------------------------------------------------------------------
+//---------------------------Global variables--------------------------------------------
 
-// Global variables
-double currentBalance = 0.0;
-double monthlyIncome = 0.0;
+
+double currentBalance = 0.0;// Stores the user's current balance
+
+double monthlyIncome = 0.0;// Stores the user's monthly income
 
 const int MaxTransactions = 100;//max number of transactions app can store
 
 //arrays for transactions
-string transCategory[MaxTransactions];
-string transType[MaxTransactions];
-double transAmount[MaxTransactions];
+string transCategory[MaxTransactions];// Category of each transaction
+string transType[MaxTransactions];// "deposit" or "withdraw"
+double transAmount[MaxTransactions];// Amount of each transaction
 
-int transactionCount = 0;
+int transactionCount = 0;//Transaction count to be recorded
 
 //------------------------------------------------------------------------
 
@@ -36,7 +37,7 @@ void welcomeMessage()
     cout << "\nTo begin managing your balance please enter your average monthly income (in pounds):\n£ ";
 }
 
-//display menu funciton
+//display menu funciton(without logic so far)
 void viewMenu()
 {
     cout << "\n=== MAIN MENU ===" << endl;
@@ -55,46 +56,50 @@ void userInsertIncome()
 {
     cin >> monthlyIncome;
     
-    //validation
+    //validation if its a positive number
     while (monthlyIncome <= 0) 
     {
         cout << "Please enter a valid income amount (greater than 0): £ ";
         cin >> monthlyIncome;
     }
-    
+    // setting current ballance same as income
     currentBalance = monthlyIncome;
     cout << "\nYour initial balance has been set to: £" << currentBalance << endl;
 }
 
 void deposit()
 {
-   //making able to deposit money to the ballance
+   //making able to deposit money to the ballance and save transaction
    cout << "\n === DEPOSIT ===" << endl;
    cout << "Enter deposit amoutn (£): ";
    double amount;
    cin >> amount;
 
 
-   //validation
+   //validation check if amount is more then 0
    if (amount <= 0)
    {
       cout << "Invalid amount.Please enter a positive value" << endl;
-      return;
+      return;//stop deposit if wrong value
    } 
 
    cout << "Enter category (e.g, Salary, Bonus, Gift): ";
-   ///
+   
+   //clean input buffer before using getline
    cin.ignore();
    string category;
    getline(cin, category);
-   ///
+
+    //checking if we still have space for new transaction
     if (transactionCount >= MaxTransactions) 
     {
         cout << "Transaction limit reached! Cannot add more transactions." << endl;
         return;
     }
+    //add money to current ballance
     currentBalance += amount;
 
+    //save info about this deposit in arrays
     transCategory[transactionCount] = "Deposit - " + category;
     transType[transactionCount] = "deposit";
     transAmount[transactionCount] = amount;
@@ -125,6 +130,8 @@ int main()
    welcomeMessage();
    userInsertIncome();
     
- 
-
+   //here later will be main loop with menu and user choice
+    
+   
+   return 0;
 }
