@@ -127,11 +127,53 @@ void deposit()
 //-----------------------------------------------------------------------------
 int main()
 {
-   welcomeMessage();
-   userInsertIncome();
+    welcomeMessage();
+    userInsertIncome();
     
-   //here later will be main loop with menu and user choice
-    
+    int choice = 0; //user menu choice
+
+    //main loop to keep program running until user choose exit
+    do
+    {
+        viewMenu();      //show menu
+        cin >> choice;   //get user option
+        
+        switch (choice)
+        {
+            case 1:
+                deposit(); //call deposit function
+                break;
+
+            case 2:
+                //here later will be withdraw function
+                cout << "Withdraw feature not added yet." << endl;
+                break;
+
+            case 3:
+                //here later will be view balance function
+                cout << "View balance feature not added yet." << endl;
+                break;
+
+            case 4:
+                //here later will be transaction summary
+                cout << "Transaction summary not added yet." << endl;
+                break;
+
+            case 5:
+                //here later will be spending by category
+                cout << "Spending by category not added yet." << endl;
+                break;
+
+            case 6:
+                cout << "Exiting program..." << endl;
+                break;
+
+            default:
+                cout << "Invalid option. Please choose 1-6." << endl;
+                break;
+        }
+
+    } while (choice != 6); //repeat until user chooses exit
    
    return 0;
 }
