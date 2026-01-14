@@ -10,12 +10,22 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+//-----------------------------------------------------------------------
 
 // Global variables
 double currentBalance = 0.0;
 double monthlyIncome = 0.0;
 
+const int MaxTransactions = 100;//max number of transactions app can store
+
+//arrays for transactions
+string transCategory[MaxTransactions];
+string transType[MaxTransactions];
+double transAmount[MaxTransactions];
+
+int transactionCount = 0;
+
+//------------------------------------------------------------------------
 
 //welcome message
 void welcomeMessage()
@@ -40,12 +50,12 @@ void viewMenu()
     cout << "Select an option (1-6): ";
 }
 
-
+// gettin input
 void userInsertIncome()
 {
     cin >> monthlyIncome;
     
-    // gettin input
+    //validation
     while (monthlyIncome <= 0) 
     {
         cout << "Please enter a valid income amount (greater than 0): £ ";
@@ -68,14 +78,30 @@ void deposit()
    //validation
    if (amount <= 0)
    {
-      count << "Invalid amount.Please enter a positive value" << endl;
+      cout << "Invalid amount.Please enter a positive value" << endl;
       return;
    } 
 
-   cout << "Enter category (e.g, Salary, Bonus, Gift): "
+   cout << "Enter category (e.g, Salary, Bonus, Gift): ";
+   ///
    cin.ignore();
-   string categort
+   string category;
+   getline(cin, category);
+   ///
+    if (transactionCount >= MaxTransactions) 
+    {
+        cout << "Transaction limit reached! Cannot add more transactions." << endl;
+        return;
+    }
+    currentBalance += amount;
 
+    transCategory[transactionCount] = "Deposit - " + category;
+    transType[transactionCount] = "deposit";
+    transAmount[transactionCount] = amount;
+    transactionCount++;
+
+    cout << "Deposit of £" << amount << " added successfully!" << endl;
+    cout << "New balance: £" << currentBalance << endl;
 }
 
 // void balanceCalculation()
@@ -93,7 +119,7 @@ void deposit()
 //    //if spending in some category is higher then some % cout you need to cut the budget in some area
 // }
 
-
+//-----------------------------------------------------------------------------
 int main()
 {
    welcomeMessage();
