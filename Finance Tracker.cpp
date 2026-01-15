@@ -31,24 +31,34 @@ int transactionCount = 0;//Transaction count to be recorded
 //welcome message
 void welcomeMessage()
 {
-    cout << "|---------------------| \n";
-    cout << "|Welcome to my program| \n";
-    cout << "|---------------------| \n";
-    cout << "\nTo begin managing your balance please enter your average monthly income (in pounds):\n£ ";
+    cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║                                                             ║" << endl;
+    cout << "║          Welcome to Finance Tracker Application             ║" << endl;
+    cout << "║                                                             ║" << endl;
+    cout << "║   Manage your personal finances with ease and clarity       ║" << endl;
+    cout << "║                                                             ║" << endl;
+    cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
+    cout << "\nTo begin managing your finances, please enter your" << endl;
+    cout << "average monthly income (in pounds):" << endl;
+    cout << "£ ";
 }
 
 //display menu funciton(without logic so far)
 void viewMenu()
 {
-    cout << "\n=== MAIN MENU ===" << endl;
-    cout << "1. Deposit" << endl;
-    cout << "2. Withdraw" << endl;
-    cout << "3. View Balance" << endl;
-    cout << "4. View Transaction Summary" << endl;
-    cout << "5. View Spending by Category" << endl;
-    cout << "6. Exit" << endl;
-    cout << "================" << endl;
-    cout << "Select an option (1-6): ";
+    cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║                    MAIN MENU                                ║" << endl;
+    cout << "╠═════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║  1. Deposit                                                 ║" << endl;
+    cout << "║  2. Withdraw                                                ║" << endl;
+    cout << "║  3. View Balance                                            ║" << endl;
+    cout << "║  4. View Transaction Summary                               ║" << endl;
+    cout << "║  5. View Spending by Category                              ║" << endl;
+    cout << "║  6. Exit                                                    ║" << endl;
+    cout << "╠═════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║  Select an option (1-6):                                    ║" << endl;
+    cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
+    cout << "  > ";
 }
 
 // gettin input
@@ -70,7 +80,9 @@ void userInsertIncome()
 void deposit()
 {
    //making able to deposit money to the ballance and save transaction
-   cout << "\n === DEPOSIT ===" << endl;
+   cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+   cout << "║                       DEPOSIT                               ║" << endl;
+   cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
    cout << "Enter deposit amoutn (£): ";
    double amount;
    cin >> amount;
@@ -112,7 +124,9 @@ void deposit()
 //making able to withdraw money from ballance and save transaction
 void withdraw()
 {
-    cout << "\n=== WITHDRAW ===" << endl;
+    cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║                      WITHDRAW                               ║" << endl;
+    cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
     cout << "Enter withdraw amount (£): ";
     double amount;
     cin >> amount;
@@ -158,16 +172,22 @@ void withdraw()
     cout << "New balance: £" << currentBalance << endl;
 }
 
+
 void viewBalance()//function to view balance
 {
-    cout << "\n=== CURRENT BALANCE ===" << endl;
-    cout << "Your current balance is: £" << currentBalance << endl;
+    cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║                   CURRENT BALANCE                           ║" << endl;
+    cout << "╠═════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║  Your current balance is: £" << currentBalance << endl;
+    cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
 }
 
 //showing all transactions user made
 void viewTransactionSummary()
 {
-    cout << "\n=== TRANSACTION SUMMARY ===" << endl;
+    cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║                 TRANSACTION SUMMARY                         ║" << endl;
+    cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
 
     //check if there is any transactions
     if (transactionCount == 0)
@@ -189,7 +209,9 @@ void viewTransactionSummary()
 //showing total spending for each category (only withdraws)
 void viewSpendingByCategory()
 {
-    cout << "\n=== SPENDING BY CATEGORY ===" << endl;
+    cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║               SPENDING BY CATEGORY                          ║" << endl;
+    cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
 
     //check if there is any transactions
     if (transactionCount == 0)
@@ -283,7 +305,12 @@ int main()
                 break;
 
             case 6:
-                cout << "Exiting program..." << endl;
+                cout << "\n╔═════════════════════════════════════════════════════════════╗" << endl;
+                cout << "║                                                             ║" << endl;
+                cout << "║            Thank you for using Finance Tracker!             ║" << endl;
+                cout << "║                    Exiting program...                       ║" << endl;
+                cout << "║                                                             ║" << endl;
+                cout << "╚═════════════════════════════════════════════════════════════╝" << endl;
                 break;
 
             default:
