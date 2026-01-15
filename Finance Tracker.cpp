@@ -17,12 +17,12 @@ double currentBalance = 0.0;// Stores the user's current balance
 
 double monthlyIncome = 0.0;// Stores the user's monthly income
 
-const int MaxTransactions = 100;//max number of transactions app can store
+const int MaxTransactions = 200;//max number of transactions app can store
 
 //arrays for transactions
-string transCategory[MaxTransactions];// Category of each transaction
-string transType[MaxTransactions];// "deposit" or "withdraw"
-double transAmount[MaxTransactions];// Amount of each transaction
+string transCategory[200];// Category of each transaction
+string transType[200];// "deposit" or "withdraw"
+double transAmount[200];// Amount of each transaction
 
 int transactionCount = 0;//Transaction count to be recorded
 
